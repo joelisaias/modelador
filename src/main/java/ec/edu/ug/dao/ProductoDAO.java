@@ -30,9 +30,10 @@ public class ProductoDAO extends AbstractDAO<Producto,Long> {
 	
 	public List<Producto> listProductos(Producto filter,PaginationTemplate pagination){
 		CriteriaQuery<Producto> cq=createCriteriaQuery();
+		CriteriaBuilder cb=getCriteriaBuilder();
+		Root<Producto> root=cq.from(Producto.class);
+
 		if(filter!=null){
-			CriteriaBuilder cb=getCriteriaBuilder();
-			Root<Producto> root=cq.from(Producto.class);
 			if(filter.getId()!=null)
 				cq.where(cb.equal(root.<Long>get("id"),filter.getId()));
 			if(filter.getCodigo()!=null)
