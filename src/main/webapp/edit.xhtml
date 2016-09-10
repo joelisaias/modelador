@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="content">
+
+
+
+		<h:form id="frm2">
+
+		<ui:param name="mb" value="#{productoMB}" />
+		<ui:param name="dto" value="#{mb.currentDTO}" />
+
+
+			<div class="panel-body">
+				<div class="form-group">
+					<h:outputLabel value="Id"/>
+					<h:outputLabel value="#{dto.id}" />
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Codigo" for="txtCod"/>
+					<h:inputText id="txtCod" required="true" requiredMessage="Valor es necesario" value="#{dto.codigo}" pt:placeholder="Codigo" styleClass="form-control"/>
+					<h:message for="txtCod" errorClass="text-danger" infoClass="text-info" warnClass="text-warning"/>
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Descripcion" for="txtDesc"/>
+					<h:inputText id="txtDesc" required="true" requiredMessage="Valor es necesario" value="#{dto.descripcion}" pt:placeholder="Descripcion" styleClass="form-control"/>
+					<h:message for="txtDesc" errorClass="text-danger" infoClass="text-info" warnClass="text-warning"/>
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Precio" for="txtPre"/>
+					<h:inputText id="txtPre" value="#{dto.precio}" pt:placeholder="$00.00" required="true" requiredMessage="Valor es necesario" styleClass="form-control"/>
+					<h:message for="txtPre" errorClass="text-danger" infoClass="text-info" warnClass="text-warning"/>
+				</div>
+				<div class="form-group">
+					<h:outputLabel value="Estado" for="lsEst"/>
+					<h:selectOneMenu id="lsEst" styleClass="form-control" value="#{dto.estado}" pt:placeholder="Estado" required="true" requiredMessage="Valor es necesario" >
+				        <f:selectItem itemLabel="Activo" itemValue="A" />
+				        <f:selectItem itemLabel="Inactivo" itemValue="I" />
+				    </h:selectOneMenu>
+					<h:message for="lsEst" errorClass="text-danger" infoClass="text-info" warnClass="text-warning"/>
+				</div>
+				
+				<div class="panel-footer">
+					<div class="btn-toolbar" role="toolbar" >
+						<h:commandLink action="#{mb.volver}" title="Volver" styleClass="btn btn-link" ><span class="glyphicon glyphicon-arrow-left"></span><h:outputText value="Volver"/></h:commandLink>
+						<h:commandLink action="#{mb.guardar}" title="Guardar" styleClass="btn btn-link" ><span class="glyphicon record-save"></span><h:outputText value="Guardar"/></h:commandLink>
+						<h:commandLink rendered="#{not empty dto.id}" action="#{mb.eliminar}" title="Eliminar" styleClass="btn btn-link" ><span class="glyphicon record-del"></span><h:outputText value="Eliminar"/></h:commandLink>
+						
+					</div>
+				</div>
+
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

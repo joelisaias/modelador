@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="content">
+
+		<ui:param name="mb" value="#{productoMB}" />
+		<ui:param name="dto" value="#{mb.currentDTO}" />
+		<ui:param name="filter" value="#{mb.filterDTO}" />
+
+		<div class="page-header">
+			<h3>Productos</h3>
+		</div>
+
+<ui:remove>
+		<h:form styleClass="form-inline">
+			<p>
+			<div class="form-group">
+				<h:outputLabel for="txtId" value="Id" />
+				<h:inputText id="txtId" value="#{filter.id}"
+					styleClass="form-control" pt:placeholder="Id" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel for="txtCod" value="Codigo" />
+				<h:inputText id="txtCod" value="#{filter.codigo}"
+					styleClass="form-control" pt:placeholder="Codigo" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel for="txtDesc" value="Descripcion" />
+				<h:inputText id="txtDesc" value="#{filter.descripcion}"
+					styleClass="form-control" pt:placeholder="Descripcion" />
+			</div>
+			<h:commandLink action="#{mb.buscar}" title="Buscar"
+				styleClass="btn btn-link">
+				<span class="glyphicon record-refresh"></span>
+			</h:commandLink>
+			</p>
+		</h:form>
+</ui:remove>
+		<h:form id="frmPtoRes">
+
+			<p>
+				<h:commandLink action="#{mb.agregar}" title="Agregar"
+					styleClass="btn btn-link">
+					<span class="glyphicon record-add"></span>
+					<h:outputText value="Agregar" />
+				</h:commandLink>
+			</p>
+			<div class="table-responsive">
+
+
+
+				<h:dataTable value="#{mb.productos}" var="reg"
+					styleClass="table table-striped table-hover">
+					<h:column width="10%" styleClass="text-left">
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{reg.id}" />
+					</h:column>
+
+					<h:column width="10%" styleClass="text-left">
+						<f:facet name="header">Codigo</f:facet>
+						<h:outputText value="#{reg.codigo}" />
+					</h:column>
+
+					<h:column width="25%" styleClass="text-left">
+						<f:facet name="header">Descripcion</f:facet>
+						<h:outputText value="#{reg.descripcion}" />
+					</h:column>
+
+					<h:column width="25%" styleClass="text-left">
+						88<f:facet name="header">Descripcion</f:facet>
+						<h:outputText value="#{reg.descripcion}" />
+					</h:column>
+
+					<h:column width="25%" styleClass="text-left">
+						<f:facet name="header">Precio</f:facet>
+						<h:outputText value="#{reg.precio}" />
+					</h:column>
+
+					<h:column width="25%" styleClass="text-left">
+						<f:facet name="header">Fecha Creacion</f:facet>
+						<h:outputText value="#{reg.fechacreacion}" />
+					</h:column>
+
+					<h:column width="25%" styleClass="text-left">
+						<f:facet name="header">Fecha Modificacion</f:facet>
+						<h:outputText value="#{reg.fechamodificacion}" />
+					</h:column>
+
+
+					<h:column width="10%" styleClass="text-left">
+						<f:facet name="header">Estado</f:facet>
+						<h:outputText title="#{reg.estadoDesc}"
+							styleClass="glyphicon estado #{reg.estado}" />
+					</h:column>
+
+					<h:column width="10%" styleClass="text-left">
+						<f:facet name="header">Acciones</f:facet>
+
+						<h:commandLink action="#{mb.editar(reg.id)}" title="Editar"
+							styleClass="btn btn-link">
+							<span class="glyphicon record-edit"></span>
+						</h:commandLink>
+						<h:commandLink action="#{mb.eliminar(reg.id)}" title="Eliminar"
+							styleClass="btn btn-link">
+							<span class="glyphicon record-del"></span>
+						</h:commandLink>
+
+					</h:column>
+				</h:dataTable>
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

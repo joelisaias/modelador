@@ -1,9 +1,20 @@
 package ec.edu.ug.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Formula;
+
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -11,86 +22,45 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
-@Table(name="PRODUCTO")
 public class Producto implements Serializable,AbstractEntity {
 	private static final long serialVersionUID = 1L;
 
+
+	@Getter @Setter
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
+	@Getter @Setter
 	private String codigo;
 
+	@Getter @Setter
 	private String descripcion;
 
-	private String estado;
+	@Getter @Setter
+	private BigDecimal precio;
 
+	@Getter @Setter
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechacreacion;
 
+	@Getter @Setter
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechamodificacion;
 
-	private BigDecimal precio;
+	@Getter @Setter
+	private String estado;
 
+
+	@Getter @Setter
+	@Formula("(case estado when 'A' then 'Activo' else 'Inactivo' end)")
+	private String estadoDesc;
 	public Producto() {
 	}
-
-	public Long getId() {
-		return this.id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getCodigo() {
-		return this.codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getDescripcion() {
-		return this.descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public String getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-
-	public Date getFechacreacion() {
-		return this.fechacreacion;
-	}
-
-	public void setFechacreacion(Date fechacreacion) {
-		this.fechacreacion = fechacreacion;
-	}
-
-	public Date getFechamodificacion() {
-		return this.fechamodificacion;
-	}
-
-	public void setFechamodificacion(Date fechamodificacion) {
-		this.fechamodificacion = fechamodificacion;
-	}
-
-	public BigDecimal getPrecio() {
-		return this.precio;
-	}
-
-	public void setPrecio(BigDecimal precio) {
-		this.precio = precio;
+	
+	@Override
+	public String toString() {
+		return "("+getId()+") ["+getCodigo()+"] - "+getDescripcion();
 	}
 
 }

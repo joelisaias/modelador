@@ -1,0 +1,86 @@
+.glyphicon.record-add{
+    background: url(../img/btn/record_add.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.record-del{
+    background: url(../img/btn/record_del.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.record-edit{
+    background: url(../img/btn/record_edit.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.record-save{
+    background: url(../img/btn/record_save.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.record-discard{
+    background: url(../img/btn/record_discard.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.record-refresh{
+    background: url(../img/btn/record_refresh.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.record-view{
+    background: url(../img/btn/blue-eye.png) no-repeat ;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.glyphicon.estado.A{
+    background: url(../img/btn/status-on.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+
+.glyphicon.estado.I{
+    background: url(../img/btn/status-off.png) no-repeat;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.bg.center{
+    text-align: center;
+}
+.bg.left{
+    text-align: left;
+}
+.bg.right{
+    text-align: right;
+}
+th.width5,td.width5{width: 5%;}
+th.width10,td.width10{width: 10%;}
+th.width15,td.width15{width: 15%;}
+th.width20,td.width20{width: 20%;}
+th.width25,td.width25{width: 25%;}
+th.width30,td.width30{width: 30%;}
+th.width35,td.width35{width: 35%;}
+th.width40,td.width40{width: 40%;}
+th.width45,td.width45{width: 45%;}
+th.width50,td.width50{width: 50%;}
+th.width55,td.width55{width: 55%;}
+th.width60,td.width60{width: 60%;}
+th.width65,td.width65{width: 65%;}
+th.width70,td.width70{width: 70%;}
+th.width75,td.width75{width: 75%;}
+th.width80,td.width80{width: 80%;}
+th.width85,td.width85{width: 85%;}
+th.width90,td.width90{width: 90%;}
+th.width95,td.width95{width: 95%;}
+th.width100,td.width10{width: 100%;}
+
+tr.middle,th.middle,td.middle{vertical-align: middle;}
